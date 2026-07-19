@@ -1,0 +1,30 @@
+# JetBrains IDE
+.idea/
+
+# Build directories
+build/
+cmake-build-*/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Binaries
+*.exe
+*.obj
+*.o
+*.lib
+*.dll
+*.pdb
+
+# CUDA build artifacts
+*.ptx
+*.cubin
+*.fatbin
+
+# Logs / temp
+*.log
+*.tmp
