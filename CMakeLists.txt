@@ -7,6 +7,7 @@ set(CMAKE_CUDA_STANDARD 20)
 
 add_executable(cuda_hello
         main.cu
+        include/timer.cuh
 )
 
 set_target_properties(cuda_hello PROPERTIES
