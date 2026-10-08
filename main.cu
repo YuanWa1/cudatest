@@ -1,5 +1,7 @@
 #include <cstdio>
 #include <cuda_runtime.h>
+#include "timer.cuh"
+#include "01-vector-add/VectorAdd.cu"
 #include <iostream>
 
 __global__ void helloKernel()

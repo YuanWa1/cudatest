@@ -8,6 +8,11 @@ set(CMAKE_CUDA_STANDARD 20)
 add_executable(cuda_hello
         main.cu
         include/timer.cuh
+        01-vector-add/VectorAdd.cu
+)
+
+target_include_directories(cuda_hello PRIVATE
+        ${CMAKE_SOURCE_DIR}/include
 )
 
 set_target_properties(cuda_hello PROPERTIES

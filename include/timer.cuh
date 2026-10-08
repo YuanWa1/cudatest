@@ -4,8 +4,11 @@
 
 #ifndef CUDAGPU_TIMER_CUH
 #define CUDAGPU_TIMER_CUH
+#include <algorithm>
+#include <numeric>
 
 #include <cuda_runtime.h>
+#include <vector>
 
 struct GpuTimer
 {
@@ -110,17 +113,29 @@ double bandwidth_GBps(std::size_t bytes, float ms)
 
 double theoretical_bandwidth_GBps()
 {
-    int device;
+    int device = 0;
     cudaGetDevice(&device);
 
-    cudaDeviceProp prop;
-    cudaGetDeviceProperties(&prop, device);
+    int memory_clock_khz = 0;
+    int memory_bus_width_bits = 0;
+
+    cudaDeviceGetAttribute(
+        &memory_clock_khz,
+        cudaDevAttrMemoryClockRate,
+        device
+    );
+
+    cudaDeviceGetAttribute(
+        &memory_bus_width_bits,
+        cudaDevAttrGlobalMemoryBusWidth,
+        device
+    );
 
     const double memory_clock_hz =
-        static_cast<double>(prop.memoryClockRate) * 1e3;
+        static_cast<double>(memory_clock_khz) * 1e3;
 
     const double bus_width_bytes =
-        static_cast<double>(prop.memoryBusWidth) / 8.0;
+        static_cast<double>(memory_bus_width_bits) / 8.0;
 
     return 2.0 * memory_clock_hz * bus_width_bytes / 1e9;
 }
