@@ -7,7 +7,6 @@ set(CMAKE_CUDA_STANDARD 20)
 
 add_executable(cuda_hello
         main.cu
-        include/timer.cuh
         01-vector-add/VectorAdd.cu
 )
 
