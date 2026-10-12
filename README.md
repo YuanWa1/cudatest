@@ -16,14 +16,14 @@ Measured on: **NVIDIA RTX 4070 Laptop** (see [`hardware.md`](hardware.md) for fu
 
 | # | Kernel | Variant | Time (ms) | Effective BW (GB/s) | % of Peak | Bound by |
 |---|--------|---------|-----------|---------------------|-----------|----------|
-| 1 | Vector Add | naive | | | | memory |
-| 1 | Vector Add | grid-stride | | | | memory |
-| 2 | Vector Scale | out-of-place | | | | memory |
-| 2 | Vector Scale | in-place | | | | memory |
-| 3 | Element-wise | 3 separate launches | | | | memory |
-| 3 | Element-wise | fused | | | | memory |
+| 1 | Vector Add | naive | 5.33135   | 229.061             | 89.4657%  | memory |
+| 1 | Vector Add | grid-stride | 5.04      | 233.255             | 91.104%   | memory |
+| 2 | Vector Scale | out-of-place |           |                     |           | memory |
+| 2 | Vector Scale | in-place |           |                     |           | memory |
+| 3 | Element-wise | 3 separate launches |           |                     |           | memory |
+| 3 | Element-wise | fused |           |                     |           | memory |
 
-<!-- Problem size for the table above: N = ___ elements (fp32). Median of ___ runs after warm-up. -->
+Problem size for the table above: N = 100,000,000 elements (fp32). Median of 30 runs after 5 warm-up runs.
 
 ---
 
